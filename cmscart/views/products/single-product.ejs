@@ -1,0 +1,346 @@
+<% include ../_layouts/header %>
+
+<!-- <div class="breadcrump">
+    <div class="container">
+        <span><a href=""><%=  %></a></span>/
+        <span><a href=""><%= product.category %></a></span>
+    </div>
+</div> -->
+
+<section class="main item-description mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 item-img">
+                <div class="item-images-container">
+                    <div class="image image-zoom zoom">
+                        <div class="lge"></div>
+                        <img class="img-tag" src="/product_images/<%= product._id %>/<%= product.image %>">
+                    </div>
+                </div>
+
+                <div class="slider-images-container">
+                    <div class="images-list">
+                        <li>
+                            <img class="img change-main" src="/product_images/<%= product._id %>/<%= product.image %>" >
+                        </li>
+                        <% galleryImages.forEach(function(image) { %>
+
+                        <% if(image != "thumbs") { %>
+                        <li>
+                            <img class="img change-main" src="/product_images/<%= product._id %>/gallery/<%= image %>" alt="">
+                        </li>
+
+                        <%  } %>
+
+                        <% }); %>
+                    </div>
+                    <!-- <div class="images-list">
+                        <div class="img">
+                            <img src="img/product_8417.jpg" alt="">
+                        </div>
+                        <div class="img">
+                            <img src="img/product_8417.jpg" alt="">
+                        </div>
+                        <div class="img">
+                            <img src="img/product_8417.jpg" alt="">
+                        </div>
+                        <div class="img">
+                            <img src="img/product_8417.jpg" alt="">
+                        </div>
+                        <div class="img">
+                            <img src="img/product_8417.jpg" alt="">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="item-description-container">
+                    <div class="item-title-container">
+                        <h1>
+                            <%= product.title %>
+                        </h1>
+                    </div>
+                    <div class="item-price-container">
+                        <div class="current-price">
+                            <h2>
+                                <%= parseFloat(product.price).toFixed(2) %>лв.
+                            </h2>
+                        </div>
+                        <div class="item-ex-price-holder">
+                            <h2>
+                                149.00 лв.
+                            </h2>
+                            <span class="cross-line"></span>
+                        </div>
+                    </div>
+                    <div class="code-and-stars">
+                        <p>
+                            Код: B164143
+                        </p>
+
+                        <div class="stars">
+                            <h3>Оцени продукта</h3>
+                            <ul>
+
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="colors-container">
+                        <p>
+                            Избери цвят: <span class="current-color">бежов</span>
+                        </p>
+
+                        <div class="colors">
+
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="offert-container">
+                        <!-- <h2>БЕЗПЛАТНА ДОСТАВКА НАД 49.99 ЛВ.</h2> -->
+
+                        <div class="button">
+
+                            <a href="/cart/add/<%=product.slug %>">добави в кошницата</a>
+                        </div>
+                    </div>
+                    <div class="add-to-favourites">
+                        <span>Добави в любими</span>
+                    </div>
+                    <div class="description-container">
+                        <p>
+                            <%= product.desc %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- <section class="popular-products">
+        <div class="container">
+            <div class="section-title">
+                <div class="arrows-container">
+                    <div class="arrow left-arrow1"><i class="fas fa-angle-left"></i></div>
+                    <div class="arrow right-arrow1"><i class="fas fa-angle-right"></i></div>
+                </div>
+                <div class="title-left">
+                    <h2>Популярни продукти</h2>
+                </div>
+    
+            </div>
+        </div>
+        <div class="container">
+            <div class="popular-products-container">
+                <div class="slide-products row">
+                    <div class=" col-md-3 col-lg-3 col-sm-3">
+                        <div class="slide-card-pr">
+                            <div class="img-container">
+                                <div class="heart-like-wrapper">
+                                    <div class="heart-container">
+                                        <span> <i class="far fa-heart"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <img src="./images/hmgoepprod (1).jpg" alt="">
+                            </div>
+    
+                            <div class="pr-details-container">
+                                <div class="product-title">
+                                    <h2>Жилетка която в плетенаа</h2>
+                                </div>
+                                <div class="price-like">
+                                    <div class="price-mini">
+                                        134.50лв
+                                    </div>
+                                    <div class="add-to-bag">
+                                    <a href="#">   <span></span></a> 
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 col-lg-3 col-sm-3">
+                        <div class="slide-card-pr">
+                            <div class="img-container">
+                                <div class="heart-like-wrapper">
+                                    <div class="heart-container">
+                                        <span> <i class="far fa-heart"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <img src="./images/hmgoepprod (1).jpg" alt="">
+                            </div>
+    
+                            <div class="pr-details-container">
+                                <div class="product-title">
+                                    <h2>Жилетка която в плетена</h2>
+                                </div>
+                                <div class="price-like">
+                                    <div class="price-mini">
+                                        134.50лв
+                                    </div>
+                                    <div class="like-mini">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-heart" style="display: none"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 col-lg-3 col-sm-3">
+                        <div class="slide-card-pr">
+                            <div class="img-container">
+                                <div class="heart-like-wrapper">
+                                    <div class="heart-container">
+                                        <span> <i class="far fa-heart"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <img src="./images/hmgoepprod (3).jpg" alt="">
+                            </div>
+    
+                            <div class="pr-details-container">
+                                <div class="product-title">
+                                    <h2>Жилетка която в плетена</h2>
+                                </div>
+                                <div class="price-like">
+                                    <div class="price-mini">
+                                        134.50лв
+                                    </div>
+                                    <div class="like-mini">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-heart" style="display: none"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 col-lg-3 col-sm-3">
+                        <div class="slide-card-pr">
+                            <div class="img-container">
+                                <div class="heart-like-wrapper">
+                                    <div class="heart-container">
+                                        <span> <i class="far fa-heart"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <img src="./images/hmgoepprod.jpg" alt="">
+                            </div>
+    
+                            <div class="pr-details-container">
+                                <div class="product-title">
+                                    <h2>Жилетка която глхглигигулиугв плетена</h2>
+                                </div>
+                                <div class="price-like">
+                                    <div class="price-mini">
+                                        134.50лв
+                                    </div>
+                                    <div class="like-mini">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-heart" style="display: none"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 col-lg-3 col-sm-3">
+                        <div class="slide-card-pr">
+                            <img src="./images/hmgoepprod (1).jpg" alt="">
+                            <div class="pr-details-container">
+                                <div class="product-title">
+                                    <h2>Жилетка която в плетена</h2>
+                                </div>
+                                <div class="price-like">
+                                    <div class="price-mini">
+                                        134.50лв
+                                    </div>
+                                    <div class="like-mini">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-heart" style="display: none"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 col-lg-3 col-sm-3">
+                        <div class="slide-card-pr">
+                            <img src="./images/hmgoepprod (1).jpg" alt="">
+                            <div class="pr-details-container">
+                                <div class="product-title">
+                                    <h2>Жилетка която в плетена</h2>
+                                </div>
+                                <div class="price-like">
+                                    <div class="price-mini">
+                                        134.50лв
+                                    </div>
+                                    <div class="like-mini">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-heart" style="display: none"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 col-lg-3 col-sm-3">
+                        <div class="slide-card-pr">
+                            <img src="./images/hmgoepprod (1).jpg" alt="">
+                            <div class="pr-details-container">
+                                <div class="product-title">
+                                    <h2>Жилетка която в плетена</h2>
+                                </div>
+                                <div class="price-like">
+                                    <div class="price-mini">
+                                        134.50лв
+                                    </div>
+                                    <div class="like-mini">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-heart" style="display: none"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section class="subscribtion">
+        <div class="container-fluid">
+            <div class="content">
+                <div class="subscr-text">
+                    <h3>Абонирай се</h3>
+                    <span>за нашия бюлетин</span>
+                </div>
+                <div class="input">
+                    <div class="input-section">
+                        <input type="text" placeholder="email@ex.com">
+                        <button class="send-icon" type="submit"><i class="fas fa-location-arrow"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+<!-- <script src="js/libs/single-pr-zoom.js" type="text/javascript"></script> -->
+
+<script src="/./js/libs/single-pr-zoom.js"></script>
+
+
+<% include ../_layouts/login-modal %>
+<% include ../_layouts/footer %>

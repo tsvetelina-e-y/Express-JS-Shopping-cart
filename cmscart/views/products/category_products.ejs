@@ -1,0 +1,107 @@
+<% include ../_layouts/header %>
+
+<!-- <div class="filters-container">
+    <div class="container">
+        <div class="filter-content">
+            <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 22.2%;"></div><span
+                    tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span
+                    tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 22.2%;"></span>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="content">
+    <div class="container mt-3 mb-3 pt-3 pb-3">
+        <div class="row">
+
+            <% if(products) { %>
+
+            <% products.forEach(function(product) { %>
+
+            <% if(favourites) { %>
+            <% var liked = '' %>
+            <% for(var i = 0; i < favourites.length; i++) { %>
+            <% if(favourites[i].slug == product.slug) {%>
+            <% liked = 'liked' %>
+            <% } %>
+            <% }%>
+            <%} %>
+
+            <% if(cart) { %>
+            <% var active = '' %>
+            <% for(var i = 0; i < cart.length; i++) { %>
+            <% if(cart[i].slug == product.slug) {%>
+            <% active = 'active' %>
+            <% } %>
+            <% }%>
+            <%} %>
+
+
+            <div class="col-md-3 col-sm-3">
+                <div class="slide-card-pr">
+
+                    <div class="heart-like-wrapper">
+                        <a href="/favourites/add/<%= product.slug %>" class="heart-link <%= liked %>">
+                            <div class="heart-container">
+                                <span> <i class="far fa-heart"></i></span>
+                                <span><i class="fas fa-heart"></i></span>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <% if (product.image == "") { %>
+
+
+                    <img src="/images/noimage.png" alt="" class="product-img">
+                    <% } else { %>
+
+                    <a href="/products/<%= product.slug %>">
+
+
+
+                        <img src="/product_images/<%= product._id %>/<%= product.image %>" alt="" class="product-img"></a>
+                    <% } %>
+
+                    <div class="pr-details-container">
+                        <div class="product-title">
+                            <h2>
+                                <%= product.title %>
+                            </h2>
+                        </div>
+
+                        <div class="price-like">
+                            <div class="price-mini">
+                                
+                                <%= parseFloat(product.price).toFixed(2) %>лв.
+                            </div>
+                            <div class="add-to-bag">
+                                <a href="/cart/add/<%= product.slug %>" class="<%= active %>"> <span></span></a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <% }); %>
+
+            <% } else {%>
+
+            <h2>this category is empty</h2>
+
+            <% } %>
+
+
+        </div>
+    </div>
+</div>
+
+
+<% include ../_layouts/login-modal %>
+<% include ../_layouts/footer %>

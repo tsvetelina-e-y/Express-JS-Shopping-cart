@@ -1,0 +1,45 @@
+<% include ../_layouts/header %>
+
+<% if (typeof favourites !== "undefined") { %>
+
+<div class="container">
+    <table class="table table-striped mt-3">
+        <tr>
+            <th>Снимка</th>
+            <th>Продукт</th>
+            <th>Цена</th>
+            <th>-</th>
+        </tr>
+
+        <tr>
+
+            <% favourites.forEach(function(product) { %>
+
+            <td><img class="product-img-table" src="<%= product.image %>" alt=""></td>
+            <td>
+                <%= product.title %>
+            </td>
+            <td>
+                <%= product.price %>
+            </td>
+            <td>
+                <a href="/cart/add/<%= product.slug %>">добави в кошница</a>&nbsp;
+                <a href="/favourites/update/<%= product.slug %>?action=remove">Премахни</a>&nbsp;
+            </td>
+        </tr>
+
+
+        <% }); %>
+
+
+    </table>
+</div>
+
+<% } else { %>
+
+<h3 class="mb-5 mt-5 text-center">Нямате добавени любими продукти.</h3>
+
+<% } %>
+
+<% include ../_layouts/login-modal %>
+<% include ../_layouts/footer %>

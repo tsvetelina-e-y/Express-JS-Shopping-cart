@@ -1,0 +1,63 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Нова категория</h2>
+<a href="/admin/categories" class="btn btn-primary">Обратно</a>
+<br><br>
+
+
+<form action="/admin/categories/add-category" method="post" enctype='multipart/form-data'>
+
+    <div class="form-group">
+        
+        <div>
+            <label for="">Заглавие</label>
+            <input type="text" class="form-control" name="title" placeholder="title">
+        </div>
+
+        <div class="form-group">
+            <label for="">Slug</label>
+            <input type="text" class="form-control" name="slug" placeholder="slug">
+        </div>
+
+        <select name="parent" id="" class="form-control">
+            <option value="null">-</option>
+            <% categories.forEach(function(category) { %>
+            <option id="id_<%= category._id %>" class="<%= category.slug %> form-control" value="<%= category.title %>">
+                <%= category.title %>
+            </option>
+            <% }); %>
+        </select>
+
+
+        <div class="form-group">
+            <label for="">Image</label>
+            <input type="file" class="form-control" name="image" id="img">
+            <img src="#" alt="" id="imgPreview">
+        </div>
+
+    </div>
+
+    <button type="
+    submit" class="btn btn-default">Submit</button>
+
+</form>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $("#imgPreview").attr('src', e.target.result).width(100).height(100);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#img").change(function () {
+        readURL(this);
+    })
+</script>
+
+<%- include('../_layouts/adminfooter')%>

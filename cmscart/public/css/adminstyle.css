@@ -1,0 +1,21 @@
+.admin-img {
+    width: 80px;
+}
+
+.is-admin {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #d1cccc;
+
+}
+
+.is-admin.yes {
+    background: greenyellow;
+}
+
+.is-admin.no {
+    background: red;
+}
+

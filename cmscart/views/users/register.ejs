@@ -1,0 +1,65 @@
+
+<% include ../_layouts/header %>
+
+
+ <main class="register-container">
+    <div class="container-fluid register-bs-container">
+        <div class="register-body col-md-6">
+            <form action="/users/register" method="POST">
+                <div class="register-form-title">
+                    <h1>регистрация</h1>
+                </div>
+                <div class="input-container">
+
+                    <div class="user-input">
+                        <input type="text" id="first_name" placeholder="име" name="firstName">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <div class="user-input">
+                        <input type="text" id="last_name" placeholder="фамилия" name="lastName">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <div class="user-input">
+                        <input type="text" id="email" placeholder="e-mail" name="email">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+
+                </div>
+                <div class="input-container">
+                    <div class="user-input">
+                        <input type="password" id="password" placeholder="парола" name="password">
+                        <i class="fas fa-key"></i>
+                    </div>
+
+                </div>
+
+                <div class="input-container">
+                    <div class="user-input">
+                        <input type="password" id="password2" placeholder="потвърди парола" name="password2">
+                        <i class="fas fa-key"></i>
+                    </div>
+
+                </div>
+
+                <div class=" terms-container">
+                    <input type="checkbox">
+                    <p>
+                        Съгласен съм с условията на регистрация
+                    </p>
+                </div>
+                
+                <div class="input-container input-submit-container">
+                    <input type="submit" value="регистрирай се">
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+<% include ../_layouts/login-modal %>
+<% include ../_layouts/footer %>

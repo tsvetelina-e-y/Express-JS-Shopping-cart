@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>admin area</title>
+    <link rel="stylesheet" href="/css/adminstyle.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/admin/categories">Admin panel</a>
+    
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only" target="_blank">CmsShopping cart</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/categories">категории</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/users">потребители</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/products">продукти</a>
+                </li>
+               
+               
+            </ul>
+           
+        </div>
+    </nav>
+
+    <br/>
+    <br/>
+
+    <main role="main" class="container">
+
+        <div class="fade-out">
+            <%- messages('messages', locals) %>
+        </div>
+     
+
+        <% if(errors)  { %>
+        <% errors.forEach(function(error) { %>
+            <div class="alert-danger">
+                <%= error.msg %>
+            </div>
+        <% }); %>
+        <% } %>

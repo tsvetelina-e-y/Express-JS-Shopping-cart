@@ -1,0 +1,59 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Продукти</h2>
+<a href="/admin/products/add-product" class="btn btn-primary">Добави продукт</a>
+<br>
+
+<% if ( count  > 0) { %>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Продукт
+            </th>
+            <th>Цена</th>
+            <td>Категория</td>
+            <td>Продукт</td>
+            <td>Промени</td>
+            <td>Изтрий</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% products.forEach(function(product) { %>
+        <tr>
+            <td>
+                <%= product.title %>
+            </td>
+            <td>
+                
+                <%= parseFloat(product.price).toFixed(2) %>лв.
+            </td>
+            <td>
+                <%= product.category %>
+            </td>
+
+            <td>
+                <% if (product.image == "") { %>
+
+                <img src="/images/noimage.png" alt="" class="product-img">
+                <% } else { %>
+                <img src="/product_images/<%= product._id %>/<%= product.image %>" alt="" class="product-img admin-img">
+                <% } %>
+            </td>
+            <td><a href="/admin/products/edit-product/<%= product._id %>">Промени</a></td>
+
+            <td><a class="confirmDeletion" href="/admin/products/delete-product/<%= product._id %>">Изтрий</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<% } else { %>
+
+<h3>No products</h3>
+
+<% } %>
+
+<%- include('../_layouts/adminfooter') %>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./css/libs/slick.css">
+    <link rel="stylesheet" href="./css/libs/slick-theme.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" /> -->
+    <link rel="stylesheet" href="/./css/custom-style.css">
+    <link rel="stylesheet" href="/./css/style.css">
+
+    <title>Starter Template for Bootstrap</title>
+</head>
+
+<body>
+
+    <div class="top-nav pr-lg-3 pt-lg-1 pb-lg-1">
+        <ul class="user-links">
+            <%if (user) { %>
+
+            <li>Здрасти, <%= user.firstName %>&nbsp;&nbsp;<a href="/users/logout">( Излез )</a></li>
+            <% } else { %>
+            <li id="login-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-user"></i><a href="#">Вход</a></li>
+            <li><i class="fas fa-key"></i><a href="/users/register">Регистрация</a></li>
+            <% } %>
+
+        </ul>
+    </div>
+
+    <section class=" logo-container">
+        <a href="/">
+            <div class="logo">
+                <!-- <h2>Ella.T</h2> -->
+                <img src="../images/logo.png" alt="">
+            </div>
+        </a>
+
+    </section>
+
+    <div class="menu-wrapper">
+        <div class="menu-nav container">
+            <nav class="">
+                <div class="hamb-container">
+                    <div class="lines">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <div class="menu">
+                    <ul>
+
+                        <% categories.forEach(function(category) { %>
+
+                        <li class="menu-title">
+
+                            <%  if(category.parent === "null") { %>
+                            <a href="#">
+                                <%= category.title %><i class="fas fa-caret-down"></i></a>
+
+
+                            <!-- second check -->
+
+                            <div class="menu-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <ul>
+
+                                                <% categories.forEach(function(subCategory) { %>
+
+                                                <% if(subCategory.parent === category.title) { %>
+
+                                                <a href="/categories/<%= subCategory._id %>">
+                                                    <li>
+                                                        <%= subCategory.title %>
+                                                    </li>
+                                                </a>
+
+
+                                                <% } %>
+
+                                                <% }) %>
+
+
+                                                <!-- second chck -->
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img src="/category_images/<%= category._id %>/<%= category.image %>" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </li>
+                        <% }})  %>
+
+                        <!-- hardcoded menu -->
+
+                        <!-- <li class="menu-title">
+                            <a href="#">Дамски дрехи<i class="fas fa-caret-down"></i></a>
+                            <div class="menu-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>тениски</li>
+                                                <li>блузи</li>
+                                                <li>жилетки</li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>якета</li>
+                                                <li>панталони</li>
+                                                <li>ризи</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img src="./images/nav-img.jpg" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu-title">
+                            <a href="#">Спортно облекло<i class="fas fa-caret-down"></i></a>
+                            <div class="menu-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>горнища</li>
+                                                <li>клинове</li>
+                                                <li>анцузи</li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img src="./images/sport.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu-title">
+                            <a href="#">Аксесоари<i class="fas fa-caret-down"></i></a>
+                            <div class="menu-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>чанти</li>
+                                                <li>очила</li>
+                                                <li>колани</li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>шалове</li>
+                                                <li>шапки</li>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu-title">
+                            <a href="#">Дрехи<i class="fas fa-caret-down"></i></a>
+                            <div class="menu-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                                <li>Drehi</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li> -->
+
+
+                        <!-- end hard coded menu -->
+                    </ul>
+
+                    <div class="search-col ">
+                        <div class="search-container">
+                            <input type="text" placeholder="търсете в сайта..."><i class="fas fa-search"></i>
+                        </div>
+                        <div class="bag-container">
+                            <a href="/cart/checkout"> <i class="fas fa-shopping-cart"></i></a>
+                            <span class="bag-quantity">
+
+                                <% if (typeof cart !== "undefined") {%>
+                                <%= cart.length %>
+                                <% } else { %>
+                                0
+                                <% } %>
+
+                            </span>
+                        </div>
+                        <div class="menu-heart-container">
+                            <a href="/favourites/all"> <i class="fas fa-heart"></i></a>
+                            <span class="heart-quantity">
+                                <% if (typeof favourites !== "undefined") {%>
+                                <%= favourites.length %>
+                                <% } else { %>
+                                0
+                                <% } %>
+
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <% if(errors)  { %>
+    <% errors.forEach(function(error) { %>
+    <div class="alert-danger">
+        <%= error.msg %>
+    </div>
+    <% }); %>
+    <% } %>
+
+    <div class="custom-notification">
+        <%- messages('messages', locals) %>
+    </div>
+
+  

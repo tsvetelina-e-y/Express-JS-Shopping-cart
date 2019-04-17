@@ -1,0 +1,33 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Потребители</h2>
+
+<br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Потребител
+            </th>
+            <th>Email</th>
+            <th>Admin</th>
+            <td>Изтрий</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% users.forEach(function(user) { %>
+        <tr>
+            <td>
+                <%= user.firstName %>&nbsp<%= user.lastName %>
+            </td>
+            <td><%= user.email %></td>
+            <td style="text-align:center"><span class="is-admin <%= user.admin == 1 ? 'yes' : 'no' %>  "></span></td>
+
+            <td><a class="confirmDeletion" href="/admin/users/delete-user/<%= user._id %>">Изтрий</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('../_layouts/adminfooter') %>
